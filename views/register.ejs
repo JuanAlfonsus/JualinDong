@@ -1,0 +1,30 @@
+<%- include('./partial/header') %>
+    <div class="container">
+      <% if (error) { %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <p style="white-space: pre-line;"><%= error.split(',').join('\n') %></p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% } %>
+      <h1 class="mb-3">Halaman Registerasi JD</h1>
+      <form action="/register" method="post">
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input type="text" class="form-control" name="email">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Role</label>
+            <select class="form-select" name="role">
+                <option selected disabled>Penjual atau pembeli?</option>
+                <option value="seller">Penjual</option>
+                <option value="buyer">Pembeli</option>
+              </select>
+          </div>
+          <button class="btn btn-dark" type="submit">Submit</button>
+      </form>
+    </div>
+<%- include('./partial/footer') %>

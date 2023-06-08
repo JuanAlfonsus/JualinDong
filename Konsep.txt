@@ -1,0 +1,48 @@
+User punya 2 role, buyer dan seller.
+Seller:
+Login, ada detail user(seller), add products(kalau belum add detail, ga bisa kesini), edit products, liat detail products (tapi tidak ada tombol buy).
+
+Buyer:
+Login, ada detail user(buyer), hanya bisa liat detail products dan list products, di detail products ada tombol buyProducts dan bisa diklik tombolnya.
+
+get ('/') home
+get ('/products') allProducts (ada filter search)
+get ('/products/:productId') detailProducts(ada link ke wa seller)
+
+get ('/register') register(ada error)
+post ('/register') postRegister
+
+get ('/login') login(ada error)
+post ('/login') postLogin
+
+isLogin middleware
+
+get ('/user/detail/:userId') detailUser
+get ('/user/addDetail/:userId') addDetailUser
+post ('/user/addDetail/:userId') addDetailUser(ada error)
+
+isSeller middleware atau validasi saja?
+
+get ('/user/addProduct') addProduct(ada error)
+post ('/user/addProduct') addProducts
+get ('/user/editProduct/:productId') editProducts(ada error)
+post ('/user/editProduct/:productId') editProducts
+
+isBuyer middleware atau validasi saja?
+
+get ('/products/:productId/buy') buyProducts
+
+
+=====================================================================================================
+
+categories sudah ditentukan (statis)
+
+jadi E-commercenya kaya nampilin barang2 apa aja yang seller jual
+terus nanti ada click buy / link redirect ke whatsapp seller
+link whatsapp seller (kali aja mau nego harga) nanti akan menggunakan hooks
+
+validasi nomor hp menggunakan 62 bukan 0
+
+Helpernya mata uang / price products
+
+getter mengambil nama barang + categories barang?

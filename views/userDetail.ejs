@@ -1,0 +1,58 @@
+<%- include('./partial/userHeader') %>
+<div class="container">
+  <% if (error) { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+    <div class="d-flex align-items-start mx-auto p-2">
+      <img src="<%= user.UserDetail ? user.UserDetail.image : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' %>" class="image" style="height: 350px; width: 350px;">
+         <div>
+            <p class="ms-1 fs-6">Nama : <%= user.UserDetail ? user.UserDetail.name : '' %> </p>
+            <p class="ms-1 fs-6">Email : <%= user.email %> </p>
+            <p class="ms-1 fs-6">Alamat : <%= user.UserDetail ? user.UserDetail.address : '' %> </p>
+           <p class="ms-1 fs-6">Nomor Telfon : <%= user.UserDetail ? user.UserDetail.phone : '' %> </p>
+            <% if (!user.UserDetail) { %>
+              <a href="/user/addDetail/<%= user.id %>" class="btn btn-primary ms-1">Isi data diri</a>
+              <% } else if (user.role === 'buyer'){ %>
+                <a href="/user/edit/<%= user.id %>" class="btn btn-secondary ms-1">Edit Data Diri</a>
+            <% } else if(user.role === 'seller') { %>
+              <a href="/user/edit/<%= user.id %>" class="btn btn-secondary ms-1">Edit Data Diri</a>
+              <a href="/user/addProduct/<%= user.id %>" class="btn btn-primary ms-1">Tambah Produk</a>
+            <% } %>
+       </div>
+  </div>
+  <div class="d-flex align-items-end">
+      <p class="mt-1 fs-5 preline"></p>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Foto Produk</th>
+        <th>Nama</th>
+        <th>Harga</th>
+        <th>Stock</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% user.Products.forEach((e, i )=> { %>
+       <tr>
+        <td><%= i + 1 %></td>
+        <td><img src="<%= e.productImage %>" alt="<%= e.name %>" style="width: 100px; height: 100px;"></td>
+        <td><%= e.name %></td>
+        <td><%= formatCurrency(e.price) %></td>
+        <td><%= e.stock %></td>
+        <td>
+          <a href="/user/editProduct/<%= user.id %>/<%= e.id %>" class="btn btn-secondary">Edit</a>
+          <a href="/user/deleteProduct/<%= user.id %>/<%= e.id %>" class="btn btn-danger">Delete</a>
+        </td>
+       </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('./partial/footer') %>

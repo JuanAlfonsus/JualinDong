@@ -1,0 +1,14 @@
+post registerUsers
+post addProducts
+categories sudah ditentukan (statis)
+
+
+jadi E-commercenya kaya nampilin barang2 apa aja yang seller jual
+terus nanti ada click buy / link redirect ke whatsapp seller
+link whatsapp seller (kali aja mau nego harga) nanti akan menggunakan hooks
+
+validasi nomor hp menggunakan 62 bukan 0
+
+Helpernya mata uang / price products
+
+getter mengambil nama barang + categories barang?

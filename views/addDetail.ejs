@@ -1,0 +1,30 @@
+<%- include('./partial/header') %>
+    <div class="container">
+        <% if (error) { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <p style="white-space: pre-line;"><%= error.split(',').join('\n') %></p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% } %>
+      <h1 class="mb-3">Isi data diri</h1>
+      <form action="/user/addDetail/<%= user.id %>" method="post">
+          <div class="mb-3">
+            <label class="form-label">Nama</label>
+            <input type="text" class="form-control" name="name">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nomor Telfon</label>
+            <input type="text" class="form-control" name="phone" placeholder="628121821231">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Alamat</label>
+            <input type="text" class="form-control" name="address">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Foto Profile</label>
+            <input type="text" class="form-control" name="image" placeholder="https://i.imgur.com/ejM4NM6.gif">
+          </div>
+          <button class="btn btn-dark" type="submit">Submit</button>
+      </form>
+    </div>
+<%- include('./partial/footer') %>

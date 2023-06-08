@@ -1,0 +1,34 @@
+<%- include('./partial/header') %>
+    <div class="container">
+      <h1>Semua produk</h1>
+      <% if (role) { %>
+        <a href="/user/detail/<%= userId %>" class="btn btn-primary mb-3">Detail User</a>
+        <% } %>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Cari" name="search" value="<%= search ? search : '' %>">
+        <button class="btn btn-outline-success" type="submit">Cari</button>
+      </form>
+      <table class="table">
+        <thead>
+          <tr>
+              <th>Foto Produk</th>
+              <th>Nama</th>
+              <th>Stock</th>
+              <th>Harga</th>
+              <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% products.forEach(e => { %>
+           <tr>
+             <td><img src="<%= e.productImage %>" alt="<%= e.name %>" style="height: 100px; width: 100px;"></td>
+            <td><%= e.name %></td>
+            <td><%= e.stock %></td>
+            <td><%= formatCurrency(e.price) %></td>
+            <td><a href="/products/<%= e.id %>" class="btn btn-dark">Detail</a></td>
+           </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+<%- include('./partial/footer') %>

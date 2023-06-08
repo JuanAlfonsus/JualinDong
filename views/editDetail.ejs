@@ -1,0 +1,24 @@
+<%- include('./partial/header') %>
+    <div class="container">
+      <h1 class="mb-3">Edit data diri</h1>
+      <form action="/user/edit/<%= user.id %>" method="post">
+          <div class="mb-3">
+            <label class="form-label">Nama</label>
+            <input type="text" class="form-control" name="name" value="<%= user.UserDetail.name %>">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nomor Telfon</label>
+            <input type="text" class="form-control" name="phone" placeholder="628121821231" value="<%= user.UserDetail.phone %>">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Alamat</label>
+            <input type="text" class="form-control" name="address" value="<%= user.UserDetail.address %>">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Foto Profile</label>
+            <input type="text" class="form-control" name="image" placeholder="https://i.imgur.com/ejM4NM6.gif" value="<%= user.UserDetail.image %>">
+          </div>
+          <button class="btn btn-dark" type="submit">Submit</button>
+      </form>
+    </div>
+<%- include('./partial/footer') %>
